@@ -1,0 +1,59 @@
+# Proceso de Desarrollo con Vibe Coding - Liss Store
+
+Aca registro el flujo de trabajo iterativo, los prompts utilizados, las decisiones técnicas y la resolución de errores asistida por Inteligencia Artificial durante el desarrollo del proyecto **Liss Store**.
+
+## 1. Herramientas Utilizadas
+* **Asistente IA:** ChatGPT (GPT-4o / o3)
+* **Editor de Código:** Visual Studio Code
+* **Control de Versiones:** Git y GitHub
+* **Despliegue:** Vercel
+
+---
+
+## 2. Prompts Principales e Iteraciones
+
+### Iteración 1: Definición de Arquitectura y Estructura
+Establecer la estructura de carpetas y planificación técnica antes de generar código.
+* **Prompt:**
+  > "Actua como un desarrollador Ful Stack Senior especializado en Next.js 16+, TypeScript y Tailwind CSS, necesito desarrollar desde cero una aplicacion web de comercio electronico llamada Liss Store. Caracteristicas del proyecto: Tienda online de productos tecnologicos, diseño minimalista, pagina de inicio, cagtalogo con productos, pagina con detalle de cada producto, carrito de compras integrado, integracion con una API externa para obtener los productos, manejos de estados mediante React Hooks, implementar server components y client components, manejo de errores. Las tecnologias que necesito son las siguientes: Next.js 16 o superior con App Router, TypeScript, Tailwind o CSS Modules. Necesito trabajar por etapas, primero analiza los requerimientos, dame una estructura de carpetas, no crees el proyecto de sin antes haber revisado las decisiones tecnicas."
+* **Resultado:** La IA propuso la organización de carpetas bajo App Router separando páginas, componentes reutilizables y servicios.
+
+### Iteración 2: Ajuste de Requisitos Técnicos y Creación del Proyecto
+* **Objetivo:** Asegurar el uso de Route Handlers, Hooks (`useState`, `useEffect`), estados de carga/error y variables de entorno.
+* **Prompt:**
+  > "Listo, ejecuté create-next-app con TypeScript, Tailwind CSS y App Router, y comprobé que el proyecto arranca correctamente y está subido a GitHub. El siguiente Paso: Variables de entorno y Route Handler (API interna). Necesito configurar un archivo .env.local (y un .env.example para GitHub) con la URL base de una API pública de productos (https://fakestoreapi.com ), crear una interfaz de TypeScript (types/product.ts) para tipar los productos, crear un Route Handler en app/api/productos/route.ts que consuma esa API usando la variable de entorno y devuelva los productos en formato JSON con manejo de errores (try/catch). Damelo paso a paso, indicándome exactamente qué carpeta/archivo crear, el código completo de ese archivo y cómo probar en el navegador que funciona antes de pasar a las páginas."
+* **Resultado:** Se inicializó el proyecto base con TypeScript y Tailwind CSS configurado.
+
+### Iteración 3: Creación de Route Handler y Variables de Entorno
+* **Objetivo:** Conectar la API externa de productos de forma segura mediante `.env.local` y `app/api/productos/route.ts`.
+* **Prompt utilizado:**
+  > *(Pega aquí el prompt donde pediste crear la API interna)*
+
+### Iteración 4: Desarrollo de Vistas, Hooks y Manejo de UI
+* **Objetivo:** Implementar las rutas `/`, `/productos`, `/productos/[id]` y `/carrito` combinando Server y Client Components.
+* **Prompt utilizado:**
+  > *(Pega aquí los prompts usados para el catálogo, carrito y estados loading/error)*
+
+---
+
+## 3. Decisiones Técnicas Tomadas
+* **App Router y Next.js 16+:** Elegido para aprovechar el renderizado en servidor (Server Components) en el catálogo inicial y mejorar el rendimiento.
+* **Route Handlers (`app/api/productos/route.ts`):** Se decidió crear un endpoint interno en lugar de llamar a la API externa directamente desde el navegador para ocultar la URL/llave de origen en `.env.local` y formatear los datos antes de enviarlos al cliente.
+* **Separación de Server y Client Components:** Se mantuvieron las páginas principales como Server Components para cargar datos rápidos, delegando el uso de `'use client'`, `useState` y `useEffect` exclusivamente a componentes interactivos como el carrito de compras y filtros.
+* **Tailwind CSS:** Utilizado para construir un diseño minimalista y adaptable (responsive) rápidamente sin crear múltiples archivos CSS externos.
+
+---
+
+## 4. Desafíos Encontrados y Resolución con IA
+
+### Desafío 1: [Ej. Error de hidratación o tipado en TypeScript]
+* **Problema:** [Describe brevemente el error que salió en la terminal o navegador].
+* **Prompt de solución:**
+  > "Me salió este error en la terminal al ejecutar el proyecto: [pega el error]. ¿Por qué ocurre y cómo lo soluciono?"
+* **Solución aplicada:** [Explica qué cambió la IA para arreglarlo].
+
+### Desafío 2: [Ej. Configuración de imágenes externas en next.config.ts]
+* **Problema:** Next.js bloqueaba las imágenes provenientes de la API externa.
+* **Prompt de solución:**
+  > [Pega el prompt que usaste]
+* **Solución aplicada:** Se agregó el dominio de la API en `images.remotePatterns` dentro de `next.config.ts`.
