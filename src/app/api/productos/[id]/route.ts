@@ -1,5 +1,5 @@
 
-import type { Product } from "@/types/product";
+import type { Product } from "@/app/types/product";
 
 interface RouteContext {
     params: Promise<{ id: string }>;

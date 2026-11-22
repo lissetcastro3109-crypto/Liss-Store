@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import type { Product } from "@/types/product";
+import type { Product } from "@/app/types/product";
 import AddToCartButton from "./AddToCartButton";
 
 export default function ProductCatalog() {
