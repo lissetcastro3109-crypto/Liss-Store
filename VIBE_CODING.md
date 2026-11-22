@@ -26,13 +26,13 @@ Establecer la estructura de carpetas y planificación técnica antes de generar 
 
 ### Iteración 3: Creación de Route Handler y Variables de Entorno
 * **Objetivo:** Conectar la API externa de productos de forma segura mediante `.env.local` y `app/api/productos/route.ts`.
-* **Prompt utilizado:**
-  > *(Pega aquí el prompt donde pediste crear la API interna)*
+* **Prompt:**
+  >Ya funciona el link y me devuelve el JSON de productos electrónicos sin errores en TypeScript. El siguiente Paso seria Navegación global y Página de Inicio (/). Necesito paso a paso: un componente de barra de navegación (Navbar.tsx) con enlaces a las 4 rutas obligatorias: Inicio (/), Productos (/productos), Detalle (desde cada producto) y Carrito (/carrito), incluyendo un contador dinámico del carrito usando useState y useEffect, integrar esa barra de navegación en layout.tsx., crear la página de Inicio (app/page.tsx) con un diseño limpio en Tailwind CSS para Liss Store y un botón que lleve a /productos. Dámelo archivo por archivo probar que no haya errores antes de pasar al catálogo."
 
 ### Iteración 4: Desarrollo de Vistas, Hooks y Manejo de UI
 * **Objetivo:** Implementar las rutas `/`, `/productos`, `/productos/[id]` y `/carrito` combinando Server y Client Components.
-* **Prompt utilizado:**
-  > *(Pega aquí los prompts usados para el catálogo, carrito y estados loading/error)*
+* **Prompt:**
+  >Ya tengo la barra de navegación y la página de inicio (/) funcionando sin errores. El siguiente paso seria el catálogo de Productos (/productos) y manejo de estados UI. Necesito lo siguiente: la página src/app/productos/page.tsx que consuma nuestro Route Handler (/api/productos) y muestre los productos en tarjetas con Tailwind CSS, incluyendo un enlace a /productos/[id] y un botón para agregar al carrito, un archivo src/app/productos/loading.tsx para mostrar un estado de carga visual mientras se obtienen los datos, un archivo src/app/productos/error.tsx para manejar errores de carga en la interfaz de forma amigable."
 
 ---
 
