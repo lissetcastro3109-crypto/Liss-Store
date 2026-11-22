@@ -52,3 +52,8 @@ Establecer la estructura de carpetas y planificación técnica antes de generar 
   > "Me apareció el siguiente Build Error en Next.js: 'Conflicting route and page at /api/productos/[id]'. ¿Por qué ocurre este conflicto en la estructura de carpetas y dónde debo ubicar la página visual?"
 * **Solución aplicada:** Se eliminó el archivo `page.tsx` de la carpeta `src/app/api/productos/[id]/` (dejando allí únicamente el `route.ts` encargado de devolver los datos JSON) y se creó la vista de interfaz de usuario en la ruta pública correspondiente: `src/app/productos/[id]/page.tsx`.
 
+### Desafío: Error de rutas de importación de TypeScript durante el build de producción
+* **Problema:** Al ejecutar `npm run build` y desplegar en Vercel, la compilación falló con el error `error TS2307: Cannot find module '@/types/product' or its corresponding type declarations` en los archivos `src/app/api/productos/[id]/route.ts`, `AddToCartButton.tsx` y `ProductCatalog.tsx`. Esto ocurrió porque la carpeta `types` fue creada dentro de `src/app/types` en lugar de `src/types`, pero el alias `@/` apunta directamente a `src/`.
+* **Prompt de solución:**
+  > "Al ejecutar npm run build para desplegar en Vercel me sale este error de TypeScript: 'error TS2307: Cannot find module @/types/product'. ¿Cómo corrijo estas rutas de importación?"
+* **Solución aplicada:** Se actualizaron las rutas de importación en los archivos afectados cambiando `from "@/types/product"` por `from "@/app/types/product"`, logrando que la verificación de tipos (`tsc`) y el build de producción finalizaran correctamente.
