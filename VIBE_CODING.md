@@ -46,14 +46,9 @@ Establecer la estructura de carpetas y planificación técnica antes de generar 
 
 ## 4. Desafíos Encontrados y Resolución con IA
 
-### Desafío 1: [Ej. Error de hidratación o tipado en TypeScript]
-* **Problema:** [Describe brevemente el error que salió en la terminal o navegador].
+### Desafío: Conflicto de rutas entre `route.ts` y `page.tsx` en Next.js App Router
+* **Problema:** Al intentar crear la vista de detalle de producto, se ubicó por error el archivo `page.tsx` dentro de `src/app/api/productos/[id]/`, donde ya existía un Route Handler (`route.ts`). Esto provocó el error de compilación: `Conflicting route and page at /api/productos/[id]`, ya que Next.js no permite que un mismo segmento de ruta responda simultáneamente como endpoint de API y como página de interfaz de usuario.
 * **Prompt de solución:**
-  > "Me salió este error en la terminal al ejecutar el proyecto: [pega el error]. ¿Por qué ocurre y cómo lo soluciono?"
-* **Solución aplicada:** [Explica qué cambió la IA para arreglarlo].
+  > "Me apareció el siguiente Build Error en Next.js: 'Conflicting route and page at /api/productos/[id]'. ¿Por qué ocurre este conflicto en la estructura de carpetas y dónde debo ubicar la página visual?"
+* **Solución aplicada:** Se eliminó el archivo `page.tsx` de la carpeta `src/app/api/productos/[id]/` (dejando allí únicamente el `route.ts` encargado de devolver los datos JSON) y se creó la vista de interfaz de usuario en la ruta pública correspondiente: `src/app/productos/[id]/page.tsx`.
 
-### Desafío 2: [Ej. Configuración de imágenes externas en next.config.ts]
-* **Problema:** Next.js bloqueaba las imágenes provenientes de la API externa.
-* **Prompt de solución:**
-  > [Pega el prompt que usaste]
-* **Solución aplicada:** Se agregó el dominio de la API en `images.remotePatterns` dentro de `next.config.ts`.
